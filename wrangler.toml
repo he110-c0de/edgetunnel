@@ -1,3 +1,6 @@
 name = "cross01" # todo
 main = "src/worker-vless.js"
 compatibility_date = "2025-01-25"
+
+[observability.logs]
+enabled = true

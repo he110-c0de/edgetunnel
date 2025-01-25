@@ -1,2 +1,2 @@
-name = "cross91" # todo
+name = "cross01" # todo
 main = "src/worker-vless.js"

@@ -10,6 +10,7 @@ let proxyIP = '';
 
 
 if (!isValidUUID(userID)) {
+	console.error('uuid is not valid');
 	throw new Error('uuid is not valid');
 }
 
@@ -111,6 +112,7 @@ async function vlessOverWSHandler(request) {
 				} `;
 			if (hasError) {
 				// controller.error(message);
+				console.error(message);
 				throw new Error(message); // cf seems has bug, controller.error will not end stream
 				// webSocket.close(1000, message);
 				return;
@@ -121,6 +123,7 @@ async function vlessOverWSHandler(request) {
 					isDns = true;
 				} else {
 					// controller.error('UDP proxy only enable for DNS which is port 53');
+					console.error('UDP proxy only enable for DNS which is port 53');
 					throw new Error('UDP proxy only enable for DNS which is port 53'); // cf seems has bug, controller.error will not end stream
 					return;
 				}
@@ -515,7 +518,8 @@ function unsafeStringify(arr, offset = 0) {
 function stringify(arr, offset = 0) {
 	const uuid = unsafeStringify(arr, offset);
 	if (!isValidUUID(uuid)) {
-		throw TypeError("Stringified UUID is invalid");
+		console.error('Stringified UUID is invalid');
+		throw TypeError('Stringified UUID is invalid');
 	}
 	return uuid;
 }
